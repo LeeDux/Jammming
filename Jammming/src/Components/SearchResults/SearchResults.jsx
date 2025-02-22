@@ -1,12 +1,12 @@
 import React from 'react'
 import TrackList from '../TrackList/Tracklist'
 
-function SearchResults({searchResults}) {
+function SearchResults({searchResults, onAdd}) {
    return (
     <>
     <div className={styles.searchResults}>
         <h2>Results</h2>
-        <TrackList tracks={searchResults}/>
+        <TrackList tracks={searchResults} onAdd={onAdd}/>
     </div>
     </>
    )
