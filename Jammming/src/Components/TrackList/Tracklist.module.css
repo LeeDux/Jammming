@@ -1,0 +1,12 @@
+.tracklist {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+    color: black;
+  }
+
+.tracklist p {
+  color: #000;
+}
+  

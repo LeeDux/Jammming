@@ -1,12 +1,13 @@
 import React from 'react'
-import TrackList from '../TrackList/Tracklist'
+import Tracklist from '../TrackList/Tracklist'
+import styles from "../SearchResults/SearchResults.module.css"
 
 function SearchResults({searchResults, onAdd}) {
    return (
     <>
     <div className={styles.searchResults}>
         <h2>Results</h2>
-        <TrackList tracks={searchResults} onAdd={onAdd}/>
+        <Tracklist tracks={searchResults} onAdd={onAdd}/>
     </div>
     </>
    )
