@@ -73,6 +73,64 @@ const Spotify = {
       }
     }
   };
+
+ 
+export function getUserId() {
+    return fetch('https://api.spotify.com/v1/me', {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    })
+      .then(response => response.json())
+      .then(data => data.id) 
+      .catch(error => {
+        console.error("Error fetching user ID:", error);
+      });
+  };
+
+
+export function createPlaylist(userId, playlistName) {
+    return fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      },
+      body: JSON.stringify({
+        name: playlistName,
+        description: 'My custom playlist from Jammming',
+        public: true, // Set to false if you don't want the playlist to be public
+      }),
+    })
+      .then(response => response.json())
+      .then(data => data.id) // Return the new playlist ID
+      .catch(error => {
+        console.error("Error creating playlist:", error);
+      });
+  }
+  
+  
+export function addTracksToPlaylist(userId, playlistId, trackUris) {
+    return fetch(`https://api.spotify.com/v1/users/${userId}/playlists/${playlistId}/tracks`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      },
+      body: JSON.stringify({
+        uris: trackUris, // Array of track URIs
+      }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log("Tracks added successfully:", data);
+      })
+      .catch(error => {
+        console.error("Error adding tracks:", error);
+      });
+  }
+  
   
   export default Spotify;
   
