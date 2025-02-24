@@ -3,12 +3,13 @@ import SearchBar from "../SearchBar/SearchBar";
 import SearchResults from "../SearchResults/SearchResults";
 import Playlist from '../Playlist/Playlist';
 import './App.css'
-import Spotify from '../../spotify';
+import Spotify, {getUserId, createPlaylist, addTracksToPlaylist} from '../../spotify';
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [playlistName, setPlaylistName] = useState('My Playlist');
   const [playListTracks, setPlayListTracks] = useState([]);
+  const [accessToken, setAccessToken] = useState("");
 
   useEffect(() => {
     Spotify.getAccessToken()
@@ -31,9 +32,15 @@ function App() {
   function savePlaylist() {
     const trackUris = playListTracks.map(track => track.uri);
     
-    console.log("Saving Playlist with URIs:", trackUris);
-  
-    
+    getUserId()
+    .then(userId => {
+      return createPlaylist(userId, playlistName)
+      .then(playlistId => {
+        addTracksToPlaylist(userId, playlistId, trackUris)
+      });
+    })
+    .catch(error => {console.log("Error saving playlist: ", error)});
+
     setPlayListTracks([]);
     setPlaylistName("New Playlist");
   };
