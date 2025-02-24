@@ -6,14 +6,9 @@ import './App.css'
 import Spotify from '../../spotify';
 
 function App() {
-  const [searchResults, setSearchResults] = useState([
-    { id: 1, name: "Song One", artist: "Artist One", album: "Album One", uri: "spotify:track:1" },
-    { id: 2, name: "Song Two", artist: "Artist Two", album: "Album Two", uri: "spotify:track:2" },
-    { id: 3, name: "Song Three", artist: "Artist Three", album: "Album Three", uri: "spotify:track:3" },
-  ]);
-
-  const [playlistName, setPlaylistName] = useState('My Playlist')
-  const [playListTracks, setPlayListTracks] = useState([{id: 4, name: "Saved Song", artist: "Saved Artist", album: "Saved Album", uri: "spotify:track:4" }]);
+  const [searchResults, setSearchResults] = useState([]);
+  const [playlistName, setPlaylistName] = useState('My Playlist');
+  const [playListTracks, setPlayListTracks] = useState([]);
 
   useEffect(() => {
     Spotify.getAccessToken()
@@ -31,7 +26,7 @@ function App() {
 
   function removeTrack(track) {
     setPlayListTracks(playListTracks.filter((playListTrack) => playListTrack.id !== track.id))
-  }
+  };
 
   function savePlaylist() {
     const trackUris = playListTracks.map(track => track.uri);
@@ -41,13 +36,17 @@ function App() {
     
     setPlayListTracks([]);
     setPlaylistName("New Playlist");
-  }
+  };
+
+  function handleSearch(searchResults){
+    setSearchResults(searchResults)
+  };
   
 
   return (
     <>
     <div className='App'>
-     <SearchBar />
+     <SearchBar onSearch={handleSearch}/>
      <SearchResults searchResults={searchResults} onAdd={addTrack}/>
      <Playlist playlistTracks={playListTracks} playlistName={playlistName} onNameChange={updatePlayListName} onRemove={removeTrack} onSave={savePlaylist}/>
     </div>
