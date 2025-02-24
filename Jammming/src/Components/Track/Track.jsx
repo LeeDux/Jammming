@@ -1,4 +1,5 @@
 import React from 'react'
+import styles from '../Track/Track.module.css'
 
 
 function Track({track, onAdd, onRemove}) {
@@ -8,8 +9,8 @@ function Track({track, onAdd, onRemove}) {
     <div className={styles.tack}>
         <h3>{track.name}</h3>
         <p>{track.artist} | {track.album}</p>
-        <button onClick={() => onAdd(track)}>+</button>
-        <button onClick={() => onRemove(track)}>-</button>
+        {onAdd && <button onClick={() => onAdd(track)}>+</button>}
+      {onRemove && <button onClick={() => onRemove(track)}>-</button>}
     </div>
     </>
   )
