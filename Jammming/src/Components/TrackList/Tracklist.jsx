@@ -10,9 +10,11 @@ function Tracklist({tracks, onAdd, onRemove}) {
   return (
     <>
     <div className={styles.tracklist}>
+      <div className={styles.track}>
         {tracks.map(track => (
             <Track key={track.id} track={track} onAdd={onAdd ? onAdd : null} onRemove={onRemove ? onRemove : null}/>
         ))}
+      </div>
     </div>
     </>
   )

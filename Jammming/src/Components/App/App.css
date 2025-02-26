@@ -7,11 +7,24 @@
 
 /* Center content and give some spacing */
 .App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   font-family: Arial, sans-serif;
   background-image: url('../../assets/images/pexels-vishnurnair-1105666.jpg');
+  background-size: cover;
   min-height: 100vh;
   padding: 20px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  width: 90%;
+ 
+  margin-top: 20px;
 }
 
 /* Style buttons globally */
@@ -28,5 +41,23 @@ button:hover {
   opacity: 0.8;
 }
 
+.SearchBar {
+  width: 80%;
+  margin-bottom: 20px;
+}
 
+/* Make search results and playlist take up equal space */
+.SearchResults, .Playlist {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr; /* Change to a single column layout on small screens */
+  }
+}
 

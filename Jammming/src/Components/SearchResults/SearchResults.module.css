@@ -1,5 +1,6 @@
 .searchResults {
-    background: white;
+    background: rgb(156, 122, 113);
+    opacity: 0.7;
     color: black;
     padding: 15px;
     border-radius: 5px;
