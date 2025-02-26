@@ -9,7 +9,7 @@
 .App {
   text-align: center;
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  background-image: url('../../assets/images/pexels-vishnurnair-1105666.jpg');
   min-height: 100vh;
   padding: 20px;
 }
