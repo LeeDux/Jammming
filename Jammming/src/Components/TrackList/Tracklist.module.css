@@ -4,7 +4,20 @@
     gap: 5px;
     padding: 10px;
     color: black;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
   }
+
+.track{
+  align-items: center;
+  background: rgb(221, 180, 164);
+  padding: 10px;
+  border-radius: 5px;
+  margin: 5px 0;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
 
 .tracklist p {
   color: #000;

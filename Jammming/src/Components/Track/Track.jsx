@@ -6,9 +6,11 @@ function Track({track, onAdd, onRemove}) {
 
   return (
     <>
-    <div className={styles.tack}>
+    <div className={styles.track}>
+      <div className={styles.info}>
         <h3>{track.name}</h3>
         <p>{track.artist} | {track.album}</p>
+      </div>
         {onAdd && <button onClick={() => onAdd(track)}>+</button>}
       {onRemove && <button onClick={() => onRemove(track)}>-</button>}
     </div>

@@ -54,8 +54,10 @@ function App() {
     <>
     <div className='App'>
      <SearchBar onSearch={handleSearch}/>
+     <div className='grid-container'>
      <SearchResults searchResults={searchResults} onAdd={addTrack}/>
      <Playlist playlistTracks={playListTracks} playlistName={playlistName} onNameChange={updatePlayListName} onRemove={removeTrack} onSave={savePlaylist}/>
+     </div>
     </div>
     </>
   )
